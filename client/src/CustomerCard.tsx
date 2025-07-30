@@ -30,61 +30,61 @@ export default function CustomerCard() {
             <h3>General</h3>
             <label>
               No.
-              <Input value={customer.no.toString()} readOnly style={{ width: 200 }} />
+              <Input value={customer.no.toString()} readOnly />
             </label>
             <label>
               Name
-              <Input value={customer.name} readOnly style={{ width: 200 }} />
+              <Input value={customer.name} readOnly />
             </label>
           </div>
           <div className="section">
             <h3>Address and Contact</h3>
             <label>
               Address
-              <Input value={customer.address ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.address ?? ''} readOnly />
             </label>
             <label>
               City
-              <Input value={customer.city ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.city ?? ''} readOnly />
             </label>
             <label>
               State
-              <Input value={customer.state ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.state ?? ''} readOnly />
             </label>
             <label>
               Zip Code
-              <Input value={customer.zipCode ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.zipCode ?? ''} readOnly />
             </label>
             <label>
               Country
-              <Input value={customer.country ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.country ?? ''} readOnly />
             </label>
             <label>
               Phone Number
-              <Input value={customer.phoneNumber ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.phoneNumber ?? ''} readOnly />
             </label>
             <label>
               Mobile Phone Number
-              <Input value={customer.mobilePhoneNumber ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.mobilePhoneNumber ?? ''} readOnly />
             </label>
             <label>
               Email
-              <Input value={customer.email ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.email ?? ''} readOnly />
             </label>
             <label>
               Home Page
-              <Input value={customer.homePage ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.homePage ?? ''} readOnly />
             </label>
             <label>
               Credit Limit
-              <Input value={(customer.creditLimit ?? '').toString()} readOnly style={{ width: 200 }} />
+              <Input value={(customer.creditLimit ?? '').toString()} readOnly />
             </label>
             <label>
               Contact
-              <Input value={customer.contact ?? ''} readOnly style={{ width: 200 }} />
+              <Input value={customer.contact ?? ''} readOnly />
             </label>
           </div>
-          <div style={{ marginTop: '1em' }}>
+          <div style={{ marginTop: '1em', gridColumn: 'span 2' }}>
             <Link to="/">Back to list</Link>
           </div>
         </form>

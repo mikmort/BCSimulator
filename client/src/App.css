@@ -111,13 +111,20 @@
   background: teal;
 }
 
+.card-form {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 24px;
+}
+
 .card-form label {
-  display: block;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 8px;
 }
 
 .card-form input {
-  width: 200px;
+  width: 100%;
 }
 
 .back-button {
@@ -147,10 +154,14 @@
 
 .card-form .section {
   margin-bottom: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  column-gap: 24px;
 }
 
 .card-form .section h3 {
   margin: 0 0 8px 0;
   font-size: 16px;
+  grid-column: span 2;
 }
 
