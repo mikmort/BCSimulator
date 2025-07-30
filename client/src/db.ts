@@ -6,8 +6,17 @@ export interface Customer {
   no: number;
   name: string;
   locationCode: string;
-  phoneNumber: string;
-  contact: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
+  country?: string;
+  phoneNumber?: string;
+  mobilePhoneNumber?: string;
+  email?: string;
+  homePage?: string;
+  creditLimit?: number;
+  contact?: string;
 }
 
 class AppDB extends Dexie {
@@ -16,7 +25,9 @@ class AppDB extends Dexie {
   constructor() {
     super('AppDB');
     this.version(1).stores({
-      customers: '++id,no,name,locationCode,phoneNumber,contact',
+      customers:
+        '++id,no,name,locationCode,address,city,state,zipCode,country,' +
+        'phoneNumber,mobilePhoneNumber,email,homePage,creditLimit,contact',
     });
   }
 }
