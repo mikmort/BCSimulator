@@ -8,6 +8,7 @@ import 'ag-grid-community/styles/ag-theme-alpine.css';
 // Register AG Grid modules
 ModuleRegistry.registerModules([AllCommunityModule]);
 import { Link } from 'react-router-dom';
+import { Card } from '@fluentui/react-components';
 import { ActionBar, GlobalHeader, TopNav } from './components/Layout';
 import './App.css';
 
@@ -138,7 +139,7 @@ export default function CustomersPage() {
         </div>
         <div className="info-card">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="info-square" />
+            <Card key={i} className="info-square" />
           ))}
         </div>
       </div>

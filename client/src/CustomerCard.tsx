@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { FiArrowLeft } from 'react-icons/fi';
+import { Input } from '@fluentui/react-components';
 import { db, type Customer } from './db';
 import { GlobalHeader, TopNav, ActionBar } from './components/Layout';
 import './App.css';
@@ -30,58 +30,58 @@ export default function CustomerCard() {
             <h3>General</h3>
             <label>
               No.
-              <input type="text" value={customer.no} readOnly />
+              <Input value={customer.no.toString()} readOnly style={{ width: 200 }} />
             </label>
             <label>
               Name
-              <input type="text" value={customer.name} readOnly />
+              <Input value={customer.name} readOnly style={{ width: 200 }} />
             </label>
           </div>
           <div className="section">
             <h3>Address and Contact</h3>
             <label>
               Address
-              <input type="text" value={customer.address ?? ''} readOnly />
+              <Input value={customer.address ?? ''} readOnly style={{ width: 200 }} />
             </label>
             <label>
               City
-              <input type="text" value={customer.city ?? ''} readOnly />
+              <Input value={customer.city ?? ''} readOnly style={{ width: 200 }} />
             </label>
             <label>
               State
-              <input type="text" value={customer.state ?? ''} readOnly />
+              <Input value={customer.state ?? ''} readOnly style={{ width: 200 }} />
             </label>
             <label>
               Zip Code
-              <input type="text" value={customer.zipCode ?? ''} readOnly />
+              <Input value={customer.zipCode ?? ''} readOnly style={{ width: 200 }} />
             </label>
             <label>
               Country
-              <input type="text" value={customer.country ?? ''} readOnly />
+              <Input value={customer.country ?? ''} readOnly style={{ width: 200 }} />
             </label>
             <label>
               Phone Number
-              <input type="text" value={customer.phoneNumber ?? ''} readOnly />
+              <Input value={customer.phoneNumber ?? ''} readOnly style={{ width: 200 }} />
             </label>
             <label>
               Mobile Phone Number
-              <input type="text" value={customer.mobilePhoneNumber ?? ''} readOnly />
+              <Input value={customer.mobilePhoneNumber ?? ''} readOnly style={{ width: 200 }} />
             </label>
             <label>
               Email
-              <input type="text" value={customer.email ?? ''} readOnly />
+              <Input value={customer.email ?? ''} readOnly style={{ width: 200 }} />
             </label>
             <label>
               Home Page
-              <input type="text" value={customer.homePage ?? ''} readOnly />
+              <Input value={customer.homePage ?? ''} readOnly style={{ width: 200 }} />
             </label>
             <label>
               Credit Limit
-              <input type="text" value={customer.creditLimit ?? ''} readOnly />
+              <Input value={(customer.creditLimit ?? '').toString()} readOnly style={{ width: 200 }} />
             </label>
             <label>
               Contact
-              <input type="text" value={customer.contact ?? ''} readOnly />
+              <Input value={customer.contact ?? ''} readOnly style={{ width: 200 }} />
             </label>
           </div>
           <div style={{ marginTop: '1em' }}>
