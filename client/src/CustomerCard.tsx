@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { Field, Input } from '@fluentui/react-components';
 import { db, type Customer } from './db';
 import { GlobalHeader, TopNav, ActionBar } from './components/Layout';
 import './App.css';
@@ -25,36 +26,21 @@ export default function CustomerCard() {
       <ActionBar title="Customer Card" />
       <div className="content" style={{ padding: '12px' }}>
         <form className="card-form">
-          <div>
-            <label>
-              No.
-              <input type="text" value={customer.no} readOnly />
-            </label>
-          </div>
-          <div>
-            <label>
-              Name
-              <input type="text" value={customer.name} readOnly />
-            </label>
-          </div>
-          <div>
-            <label>
-              Location Code
-              <input type="text" value={customer.locationCode} readOnly />
-            </label>
-          </div>
-          <div>
-            <label>
-              Phone Number
-              <input type="text" value={customer.phoneNumber} readOnly />
-            </label>
-          </div>
-          <div>
-            <label>
-              Contact
-              <input type="text" value={customer.contact} readOnly />
-            </label>
-          </div>
+          <Field label="No.">
+            <Input value={String(customer.no)} readOnly />
+          </Field>
+          <Field label="Name">
+            <Input value={customer.name} readOnly />
+          </Field>
+          <Field label="Location Code">
+            <Input value={customer.locationCode} readOnly />
+          </Field>
+          <Field label="Phone Number">
+            <Input value={customer.phoneNumber} readOnly />
+          </Field>
+          <Field label="Contact">
+            <Input value={customer.contact} readOnly />
+          </Field>
           <div style={{ marginTop: '1em' }}>
             <Link to="/">Back to list</Link>
           </div>
