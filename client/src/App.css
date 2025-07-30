@@ -107,3 +107,12 @@
 .card-form input {
   width: 200px;
 }
+
+.card-form .section {
+  margin-bottom: 16px;
+}
+
+.card-form .section h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}

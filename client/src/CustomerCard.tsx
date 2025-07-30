@@ -25,34 +25,62 @@ export default function CustomerCard() {
       <ActionBar title="Customer Card" />
       <div className="content" style={{ padding: '12px' }}>
         <form className="card-form">
-          <div>
+          <div className="section">
+            <h3>General</h3>
             <label>
               No.
               <input type="text" value={customer.no} readOnly />
             </label>
-          </div>
-          <div>
             <label>
               Name
               <input type="text" value={customer.name} readOnly />
             </label>
           </div>
-          <div>
+          <div className="section">
+            <h3>Address and Contact</h3>
             <label>
-              Location Code
-              <input type="text" value={customer.locationCode} readOnly />
+              Address
+              <input type="text" value={customer.address ?? ''} readOnly />
             </label>
-          </div>
-          <div>
+            <label>
+              City
+              <input type="text" value={customer.city ?? ''} readOnly />
+            </label>
+            <label>
+              State
+              <input type="text" value={customer.state ?? ''} readOnly />
+            </label>
+            <label>
+              Zip Code
+              <input type="text" value={customer.zipCode ?? ''} readOnly />
+            </label>
+            <label>
+              Country
+              <input type="text" value={customer.country ?? ''} readOnly />
+            </label>
             <label>
               Phone Number
-              <input type="text" value={customer.phoneNumber} readOnly />
+              <input type="text" value={customer.phoneNumber ?? ''} readOnly />
             </label>
-          </div>
-          <div>
+            <label>
+              Mobile Phone Number
+              <input type="text" value={customer.mobilePhoneNumber ?? ''} readOnly />
+            </label>
+            <label>
+              Email
+              <input type="text" value={customer.email ?? ''} readOnly />
+            </label>
+            <label>
+              Home Page
+              <input type="text" value={customer.homePage ?? ''} readOnly />
+            </label>
+            <label>
+              Credit Limit
+              <input type="text" value={customer.creditLimit ?? ''} readOnly />
+            </label>
             <label>
               Contact
-              <input type="text" value={customer.contact} readOnly />
+              <input type="text" value={customer.contact ?? ''} readOnly />
             </label>
           </div>
           <div style={{ marginTop: '1em' }}>
