@@ -106,12 +106,14 @@ export default function App() {
 
   useEffect(() => {
     async function load() {
-      const count = await db.customers.count();
-      if (count === 0) {
-        await db.customers.bulkAdd(sampleData);
-      }
-      const customers = await db.customers.toArray();
-      setRowData(customers);
+      await db.transaction('rw', db.customers, async () => {
+        const count = await db.customers.count();
+        if (count === 0) {
+          await db.customers.bulkAdd(sampleData);
+        }
+        const customers = await db.customers.toArray();
+        setRowData(customers);
+      });
     }
     load();
   }, []);
