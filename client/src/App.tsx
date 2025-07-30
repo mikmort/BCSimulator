@@ -1,25 +1,50 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
-import type { ColDef } from "ag-grid-community";
+import type { ColDef } from 'ag-grid-community';
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-alpine.css';
 import { FaTh } from 'react-icons/fa';
 import { FiSettings, FiSearch, FiHelpCircle } from 'react-icons/fi';
 import './App.css';
 
-interface Customer {
-  id: number;
-  name: string;
-  city: string;
-  balance: number;
-}
+import { db, type Customer } from './db';
 
-const sampleData: Customer[] = [
-  { id: 10000, name: 'Trey Research', city: 'Seattle', balance: 3000 },
-  { id: 20000, name: 'Coho Winery', city: 'Redmond', balance: 2500 },
-  { id: 30000, name: 'Relecloud', city: 'Denver', balance: 1200 },
-  { id: 40000, name: 'A Datum Corporation', city: 'Chicago', balance: 4100 },
-  { id: 50000, name: 'Contoso Ltd.', city: 'Austin', balance: 980 },
+const sampleData: Omit<Customer, 'id'>[] = [
+  {
+    no: 10000,
+    name: 'Trey Research',
+    locationCode: 'SEA',
+    phoneNumber: '555-0100',
+    contact: 'Mark Hens',
+  },
+  {
+    no: 20000,
+    name: 'Coho Winery',
+    locationCode: 'RED',
+    phoneNumber: '555-0150',
+    contact: 'Cindy Fox',
+  },
+  {
+    no: 30000,
+    name: 'Relecloud',
+    locationCode: 'DEN',
+    phoneNumber: '555-0200',
+    contact: 'Keith Harris',
+  },
+  {
+    no: 40000,
+    name: 'A Datum Corporation',
+    locationCode: 'CHI',
+    phoneNumber: '555-0250',
+    contact: 'Sue Black',
+  },
+  {
+    no: 50000,
+    name: 'Contoso Ltd.',
+    locationCode: 'AUS',
+    phoneNumber: '555-0300',
+    contact: 'Steven White',
+  },
 ];
 
 function GlobalHeader() {
@@ -66,17 +91,26 @@ function ActionBar() {
 }
 
 export default function App() {
-  const [rowData] = useState(sampleData);
+  const [rowData, setRowData] = useState<Customer[]>([]);
   const [columnDefs] = useState<ColDef<Customer>[]>([
-    { field: 'id', headerName: 'No.' },
+    { field: 'no', headerName: 'No.' },
     { field: 'name', headerName: 'Name', flex: 1 },
-    { field: 'city', headerName: 'City' },
-    {
-      field: 'balance',
-      headerName: 'Balance',
-      valueFormatter: (p: { value: number }) => `$${p.value.toFixed(2)}`,
-    },
+    { field: 'locationCode', headerName: 'Location Code' },
+    { field: 'phoneNumber', headerName: 'Phone Number' },
+    { field: 'contact', headerName: 'Contact' },
   ]);
+
+  useEffect(() => {
+    async function load() {
+      const count = await db.customers.count();
+      if (count === 0) {
+        await db.customers.bulkAdd(sampleData);
+      }
+      const customers = await db.customers.toArray();
+      setRowData(customers);
+    }
+    load();
+  }, []);
 
   return (
     <div className="app-container">
