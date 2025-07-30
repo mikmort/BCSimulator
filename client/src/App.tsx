@@ -123,7 +123,7 @@ export default function App() {
       <ActionBar />
       <div className="content">
         <div className="grid ag-theme-alpine">
-          <AgGridReact rowData={rowData} columnDefs={columnDefs} pagination={false} />
+          <AgGridReact rowData={rowData} columnDefs={columnDefs} pagination={false} theme="legacy" />
         </div>
         <div className="info-card">
           {[...Array(4)].map((_, i) => (
