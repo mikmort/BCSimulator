@@ -24,8 +24,9 @@ export default function CustomerCard() {
       <GlobalHeader />
       <TopNav />
       <ActionBar title="Customer Card" />
-      <div className="content" style={{ padding: '12px' }}>
-        <form className="card-form">
+      <div className="content">
+        <div style={{ flex: 1, padding: '12px' }}>
+          <form className="card-form">
           <div className="section">
             <h3>General</h3>
             <label>
@@ -87,7 +88,23 @@ export default function CustomerCard() {
           <div style={{ marginTop: '1em', gridColumn: 'span 2' }}>
             <Link to="/">Back to list</Link>
           </div>
-        </form>
+          </form>
+        </div>
+        <div className="fact-box">
+          <div className="fact-section">
+            <h4>Summary</h4>
+            <p>No. {customer.no}</p>
+            <p>{customer.name}</p>
+          </div>
+          <div className="fact-section">
+            <h4>Customer Picture</h4>
+            <div className="customer-picture-placeholder" />
+          </div>
+          <div className="fact-section">
+            <h4>Sell-to Customer Sales History</h4>
+            <div className="sales-history-placeholder" />
+          </div>
+        </div>
       </div>
     </div>
   );
