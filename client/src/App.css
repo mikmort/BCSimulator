@@ -56,14 +56,26 @@
 .action-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 8px 12px;
   border-bottom: 1px solid #ccc;
   background: #fff;
 }
 
+.action-bar .left-section {
+  display: flex;
+  align-items: center;
+}
+
+.action-bar .toolbar {
+  display: flex;
+  gap: 8px;
+  margin-left: 16px;
+}
+
 .action-bar .toolbar button {
-  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
   background: #e6e6e6;
   border: 1px solid #ccc;
   padding: 4px 8px;
@@ -71,7 +83,7 @@
 }
 
 .action-bar .toolbar button:hover {
-  background: #d0d0d0;
+  background: #d4f0f0;
 }
 
 .content {
@@ -107,6 +119,7 @@
 .card-form input {
   width: 200px;
 }
+
 .back-button {
   display: inline-flex;
   align-items: center;
@@ -128,5 +141,16 @@
 
 .fact-section {
   margin-bottom: 16px;
+}
+
+
+
+.card-form .section {
+  margin-bottom: 16px;
+}
+
+.card-form .section h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
 }
 
