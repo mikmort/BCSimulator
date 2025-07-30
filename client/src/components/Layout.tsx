@@ -6,7 +6,11 @@ import {
   FiPlus,
   FiTrash,
 } from 'react-icons/fi';
-import { Button } from '@fluentui/react-components';
+import {
+  Toolbar,
+  ToolbarButton,
+  ToolbarDivider,
+} from '@fluentui/react-components';
 import '../App.css';
 
 export function GlobalHeader() {
@@ -44,15 +48,16 @@ export function ActionBar({ title }: { title: string }) {
     <div className="action-bar">
       <div className="left-section">
         <span className="page-title">{title}</span>
-        <div className="toolbar">
-          <Button icon={<FiPlus />} appearance="secondary">
+        <Toolbar aria-label={`${title} actions`} size="large" className="toolbar">
+          <ToolbarButton icon={<FiPlus />} vertical>
             New
-          </Button>
-          <Button icon={<FiTrash />} appearance="secondary">
+          </ToolbarButton>
+          <ToolbarButton icon={<FiTrash />} vertical>
             Delete
-          </Button>
-          <Button appearance="secondary">Home</Button>
-        </div>
+          </ToolbarButton>
+          <ToolbarDivider />
+          <ToolbarButton vertical>Home</ToolbarButton>
+        </Toolbar>
       </div>
     </div>
   );

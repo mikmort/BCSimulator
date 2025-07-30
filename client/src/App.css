@@ -67,23 +67,7 @@
 }
 
 .action-bar .toolbar {
-  display: flex;
-  gap: 8px;
   margin-left: 16px;
-}
-
-.action-bar .toolbar button {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: #e6e6e6;
-  border: 1px solid #ccc;
-  padding: 4px 8px;
-  cursor: pointer;
-}
-
-.action-bar .toolbar button:hover {
-  background: #d4f0f0;
 }
 
 .content {
