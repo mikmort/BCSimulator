@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import { db, type Customer } from './db';
 import { GlobalHeader, TopNav, ActionBar } from './components/Layout';
 import './App.css';
@@ -24,41 +25,54 @@ export default function CustomerCard() {
       <TopNav />
       <ActionBar title="Customer Card" />
       <div className="content" style={{ padding: '12px' }}>
-        <form className="card-form">
-          <div>
-            <label>
-              No.
-              <input type="text" value={customer.no} readOnly />
-            </label>
+        <div style={{ flex: 1 }}>
+          <Link to="/" className="back-button" title="Back to list">
+            <FiArrowLeft />
+          </Link>
+          <form className="card-form">
+            <div>
+              <label>
+                No.
+                <input type="text" value={customer.no} readOnly />
+              </label>
+            </div>
+            <div>
+              <label>
+                Name
+                <input type="text" value={customer.name} readOnly />
+              </label>
+            </div>
+            <div>
+              <label>
+                Location Code
+                <input type="text" value={customer.locationCode} readOnly />
+              </label>
+            </div>
+            <div>
+              <label>
+                Phone Number
+                <input type="text" value={customer.phoneNumber} readOnly />
+              </label>
+            </div>
+            <div>
+              <label>
+                Contact
+                <input type="text" value={customer.contact} readOnly />
+              </label>
+            </div>
+          </form>
+        </div>
+        <div className="fact-box">
+          <div className="fact-section">
+            <h3>Summary</h3>
           </div>
-          <div>
-            <label>
-              Name
-              <input type="text" value={customer.name} readOnly />
-            </label>
+          <div className="fact-section">
+            <h3>Customer Picture</h3>
           </div>
-          <div>
-            <label>
-              Location Code
-              <input type="text" value={customer.locationCode} readOnly />
-            </label>
+          <div className="fact-section">
+            <h3>Sell-to Customer Sales History</h3>
           </div>
-          <div>
-            <label>
-              Phone Number
-              <input type="text" value={customer.phoneNumber} readOnly />
-            </label>
-          </div>
-          <div>
-            <label>
-              Contact
-              <input type="text" value={customer.contact} readOnly />
-            </label>
-          </div>
-          <div style={{ marginTop: '1em' }}>
-            <Link to="/">Back to list</Link>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   );
