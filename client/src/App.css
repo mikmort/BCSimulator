@@ -98,3 +98,12 @@
   height: 50px;
   background: teal;
 }
+
+.card-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.card-form input {
+  width: 200px;
+}
