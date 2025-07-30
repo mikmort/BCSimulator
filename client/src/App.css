@@ -120,6 +120,31 @@
   width: 200px;
 }
 
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: teal;
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+
+.fact-box {
+  width: 250px;
+  padding: 12px;
+  border-left: 1px solid #ccc;
+}
+
+.fact-section {
+  margin-bottom: 16px;
+}
+
+
+
 .card-form .section {
   margin-bottom: 16px;
 }
@@ -128,3 +153,4 @@
   margin: 0 0 8px 0;
   font-size: 16px;
 }
+

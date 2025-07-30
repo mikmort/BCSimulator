@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
 import { db, type Customer } from './db';
 import { GlobalHeader, TopNav, ActionBar } from './components/Layout';
 import './App.css';
