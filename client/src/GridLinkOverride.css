@@ -1,0 +1,68 @@
+/* Critical Grid Link Override - Must load after ag-grid styles */
+.ag-theme-bc .ag-cell .bc-link,
+.ag-theme-bc .ag-cell .bc-link:link,
+.ag-theme-bc .ag-cell .bc-link:visited,
+.ag-theme-bc .ag-cell a.bc-link,
+.ag-theme-bc .ag-cell a.bc-link:link,
+.ag-theme-bc .ag-cell a.bc-link:visited {
+  color: #118d8b !important;
+  text-decoration: none !important;
+  -webkit-text-decoration: none !important;
+  text-decoration-line: none !important;
+  border-bottom: none !important;
+  transition: text-decoration 0.15s ease !important;
+}
+
+.ag-theme-bc .ag-cell .bc-link:hover,
+.ag-theme-bc .ag-cell .bc-link:focus,
+.ag-theme-bc .ag-cell a.bc-link:hover,
+.ag-theme-bc .ag-cell a.bc-link:focus {
+  color: #118d8b !important;
+  text-decoration: underline !important;
+  -webkit-text-decoration: underline !important;
+  text-decoration-line: underline !important;
+}
+
+.ag-theme-bc .ag-cell .bc-link:active,
+.ag-theme-bc .ag-cell a.bc-link:active {
+  color: #0d6b6a !important;
+  text-decoration: underline !important;
+}
+
+/* Even more specific selectors to override everything */
+.ag-theme-bc .ag-row .ag-cell .bc-link,
+.ag-theme-bc .ag-row .ag-cell a.bc-link {
+  color: #118d8b !important;
+  text-decoration: none !important;
+}
+
+.ag-theme-bc .ag-row .ag-cell .bc-link:hover,
+.ag-theme-bc .ag-row .ag-cell a.bc-link:hover {
+  color: #118d8b !important;
+  text-decoration: underline !important;
+}
+
+/* Attribute-based selectors for React Router Links */
+.ag-theme-bc a[href].bc-link,
+.ag-theme-bc a[href].bc-link:link,
+.ag-theme-bc a[href].bc-link:visited {
+  color: #118d8b !important;
+  text-decoration: none !important;
+}
+
+.ag-theme-bc a[href].bc-link:hover,
+.ag-theme-bc a[href].bc-link:focus {
+  color: #118d8b !important;
+  text-decoration: underline !important;
+}
+
+/* Nuclear option - target everything in the grid */
+div.ag-theme-bc a {
+  color: #118d8b !important;
+  text-decoration: none !important;
+}
+
+div.ag-theme-bc a:hover {
+  color: #118d8b !important;
+  text-decoration: underline !important;
+}

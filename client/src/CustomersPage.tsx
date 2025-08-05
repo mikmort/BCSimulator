@@ -2,17 +2,20 @@ import { useEffect, useState } from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import type { ColDef, ICellRendererParams } from 'ag-grid-community';
 import { ModuleRegistry, AllCommunityModule } from 'ag-grid-community';
-import 'ag-grid-community/styles/ag-grid.css';
-import 'ag-grid-community/styles/ag-theme-alpine.css';
-
-// Register AG Grid modules
-ModuleRegistry.registerModules([AllCommunityModule]);
 import { Link } from 'react-router-dom';
 import { FiSearch, FiPlus, FiEdit, FiTrash2 as FiTrash, FiRefreshCw, FiFilter, FiDownload, FiUpload, FiMoreHorizontal } from 'react-icons/fi';
 import { BCRibbon, GlobalHeader, TopNav } from './components/Layout';
-import './App.css';
 
 import { db, type Customer } from './db';
+
+// Import ag-grid styles first, then our custom styles to override
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
+import './App.css';
+import './GridLinkOverride.css';
+
+// Register AG Grid modules
+ModuleRegistry.registerModules([AllCommunityModule]);
 
 const sampleData: Omit<Customer, 'id'>[] = [
   {
@@ -124,7 +127,12 @@ export default function CustomersPage() {
       width: 100,
       pinned: 'left',
       cellRenderer: ({ value }: ICellRendererParams<Customer, number>) => (
-        <Link to={`/customer/${value}`} className="grid-link">{value}</Link>
+        <Link 
+          to={`/customer/${value}`} 
+          className="grid-link bc-link"
+        >
+          {value}
+        </Link>
       ),
       cellClass: 'number-cell'
     },
@@ -134,7 +142,12 @@ export default function CustomersPage() {
       flex: 2,
       minWidth: 200,
       cellRenderer: ({ value, data }: ICellRendererParams<Customer>) => (
-        <Link to={`/customer/${data?.no}`} className="grid-link main-link">{value}</Link>
+        <Link 
+          to={`/customer/${data?.no}`} 
+          className="grid-link main-link bc-link"
+        >
+          {value}
+        </Link>
       ),
       cellClass: 'name-cell'
     },
@@ -142,13 +155,16 @@ export default function CustomersPage() {
       field: 'contact', 
       headerName: 'Contact',
       width: 160,
-      cellClass: 'text-cell'
+      cellClass: 'text-cell',
+      cellRenderer: ({ value }: ICellRendererParams<Customer>) => (
+        <span className="lookup-field">{value}</span>
+      )
     },
     { 
       field: 'locationCode', 
       headerName: 'Location Code',
       width: 120,
-      cellClass: 'text-cell'
+      cellClass: 'code-cell'
     },
     { 
       field: 'phoneNumber', 
@@ -160,14 +176,20 @@ export default function CustomersPage() {
       field: 'city', 
       headerName: 'City',
       width: 120,
-      cellClass: 'text-cell'
+      cellClass: 'text-cell',
+      cellRenderer: ({ value }: ICellRendererParams<Customer>) => (
+        <span className="drill-down-indicator">{value}</span>
+      )
     },
     {
       field: 'creditLimit',
       headerName: 'Credit Limit (LCY)',
       width: 150,
-      cellRenderer: ({ value }: ICellRendererParams<Customer, number>) => 
-        value ? `$${value.toLocaleString()}` : '',
+      cellRenderer: ({ value }: ICellRendererParams<Customer, number>) => (
+        <span className="currency-value">
+          {value ? `${value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}` : ''}
+        </span>
+      ),
       cellClass: 'amount-cell'
     },
   ]);
@@ -203,39 +225,46 @@ export default function CustomersPage() {
           <div className="bc-action-bar">
             <div className="action-bar-left">
               <div className="action-bar-buttons">
-                <button className="action-button primary">
-                  <FiPlus className="icon" />
-                  New
-                </button>
-                <button className="action-button">
-                  <FiEdit className="icon" />
-                  Edit
-                </button>
-                <button className="action-button">
-                  <FiTrash className="icon" />
-                  Delete
-                </button>
-                <div className="action-divider" />
-                <button className="action-button">
-                  <FiRefreshCw className="icon" />
-                  Refresh
-                </button>
-                <button className="action-button">
-                  <FiFilter className="icon" />
-                  Filter
-                </button>
-                <div className="action-divider" />
-                <button className="action-button">
-                  <FiDownload className="icon" />
-                  Export
-                </button>
-                <button className="action-button">
-                  <FiUpload className="icon" />
-                  Import
-                </button>
-                <button className="action-button">
-                  <FiMoreHorizontal className="icon" />
-                </button>
+                <div className="action-group">
+                  <button className="action-button primary">
+                    <FiPlus className="icon" />
+                    New
+                  </button>
+                  <button className="action-button">
+                    <FiEdit className="icon" />
+                    Edit
+                  </button>
+                  <button className="action-button">
+                    <FiTrash className="icon" />
+                    Delete
+                  </button>
+                </div>
+                <div className="action-group">
+                  <button className="action-button">
+                    <FiRefreshCw className="icon" />
+                    Refresh
+                  </button>
+                  <button className="action-button">
+                    <FiFilter className="icon" />
+                    Filter
+                  </button>
+                </div>
+                <div className="action-group">
+                  <button className="action-button">
+                    <FiDownload className="icon" />
+                    Export
+                  </button>
+                  <button className="action-button">
+                    <FiUpload className="icon" />
+                    Import
+                  </button>
+                  <button className="action-button">
+                    <FiMoreHorizontal className="icon" />
+                  </button>
+                </div>
+              </div>
+              <div className="record-count">
+                {rowData.length} record{rowData.length !== 1 ? 's' : ''}
               </div>
             </div>
             <div className="action-bar-right">
